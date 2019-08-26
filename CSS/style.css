@@ -1,4 +1,5 @@
 body{
 	background-image: url("../Resources/background.png");
 	padding: 10px;
+	background-repeat: no-repeat;
 }
