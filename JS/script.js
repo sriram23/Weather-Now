@@ -3,7 +3,7 @@ var cityName = "";
 var link = "";
 function parseJson(){
 	cityName = document.getElementById('city').value;
-	link = "http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;
+	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;
 	console.log(link);
 
 	var request = new XMLHttpRequest();
