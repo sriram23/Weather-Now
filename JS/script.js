@@ -53,6 +53,8 @@ function parseJson(){
 			document.getElementById('City').innerHTML = "The city doesn't exist! Kindly check";	
 			document.getElementById('Temperature').innerHTML = "";
 			document.getElementById('Climate').innerHTML = "";
+			document.getElementById('flag').src = "";
+			document.getElementById('image').src = "";
 		}
 	}
 
