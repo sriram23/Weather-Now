@@ -41,7 +41,7 @@ function parseJson(){
 			}
 			else if(obj.weather[0].main == "Clear"){
 				if(time<18 && time>6)
-					document.getElementById('image').src = "Resources/sumrise.png"
+					document.getElementById('image').src = "Resources/sunrise.png"
 				else
 					document.getElementById('image').src = "Resources/sunset.png"
 			}
