@@ -5,3 +5,42 @@ body{
 	background-size: cover;
 	height: 100%;
 }
+.cool {
+  height: 75px;
+  width: 75px;
+  background-color: #006eff;
+  border-radius: 50%;
+}
+
+.mild {
+  height: 75px;
+  width: 75px;
+  background-color: #00ddff;
+  border-radius: 50%;
+}
+
+.warm {
+  height: 75px;
+  width: 75px;
+  background-color: #ffae00;
+  border-radius: 50%;
+}
+
+.hot {
+  height: 75px;
+  width: 75px;
+  background-color: #ff5000;
+  border-radius: 50%;
+}
+
+.vhot {
+  height: 75px;
+  width: 75px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+#temperature{
+	padding: 20px;
+	color: #ffffff;
+}
