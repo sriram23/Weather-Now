@@ -1,7 +1,9 @@
 <html>
 <head>
 	<title>Weather Now</title>
-	
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<script type="text/javascript" src="JS/script.js"></script>
 	<link rel="stylesheet" type="text/css"  href="CSS/style.css">
 
@@ -12,19 +14,21 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 <body>
-	<div class="row">
-		<div class="col-md-6 col-sm-12"> <input type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div>
-		<div class="col-md-6 col-sm-12"> <button name="getWeather" onclick="parseJson()" class="btn btn-primary">Get Weather</button> </div>
+	<div class="Container">
+		<div class="row"><div class="col-md-12 col-sm-6"> <input type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div></div>
+		<div class="row"><div class="col-md-12 col-sm-6"> <button name="getWeather" onclick="parseJson()" class="btn btn-primary btn-block">Get Weather</button> </div></div>
+		</div>
+		<div class="row"><div class="col-md-5"></div><div class="col-md-2 col-sm-6"><h2 id="City"></h2></div><div class="col-md-2 col-sm-6"><img id="flag"></div><div class="col-md-5"></div></div>
+
+		<div class="row"><div class="col-md-5"></div><div class="col-md-4 col-sm-12"><img id="image"></img></div><div class="col-md-5"></div></div>
+
+		<div class="row"><div class="col-md-5"></div><div class="col-md-4 col-sm-12"><p id="Climate"></p></div><div class="col-md-5"></div></div>
+		<div class="row"><div class="col-md-5"></div><div class="col-md-4 col-sm-12"><p id="Temperature"></p></div><div class="col-md-5"></div></div>
 	</div>
-	<div class="row"><div class="col-md-12 col-sm-12"><h2 id="City"></h2></div></div>
-
-	<div class="row"><div class="col-md-12 col-sm-12"><img id="image"></img></div></div>
-
-	<div class="row"><div class="col-md-12 col-sm-12"><p id="Climate"></p></div></div>
-	<div class="row"><div class="col-md-12 col-sm-12"><p id="Temperature"></p></div></div>
-
 
 
 </body>
