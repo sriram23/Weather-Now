@@ -9,6 +9,13 @@ var time = new Date().getHours();
 // Collapsible
 var flag = 0;
 
+function convert_unix(time){
+	var date = new Date(time*1000);
+	var hours = date.getHours();
+	var min = "0"+date.getMinutes();
+	return hours+":"+min.substr(-2);
+}
+
 function expand(){
 	if(flag == 0){
 		document.getElementById('coll').style.visibility = "visible";
@@ -91,7 +98,16 @@ function parseJson(){
 			document.getElementById('wind-img').style.visibility = 'visible';
 			document.getElementById('wind').innerHTML = obj.wind.speed+" m/s";
 			document.getElementById('wind-img').style.transform = "rotate("+(obj.wind.deg-45)+"deg)";
-			console.log(obj.wind.deg);
+
+
+			var unix_time_sunrise = obj.sys.sunrise - obj.timezone;
+			var human_time_sunrise = convert_unix(unix_time_sunrise);
+			var unix_time_sunset = obj.sys.sunset - obj.timezone;
+			var human_time_sunset = convert_unix(unix_time_sunset);
+			document.getElementById('sunrise').style.visibility = 'visible';
+			document.getElementById('sunset').style.visibility = 'visible';
+			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs UTC";
+			document.getElementById('ss').innerHTML = human_time_sunset+" hrs UTC";
 		}
 		else{
 			document.getElementById('City').innerHTML = "The city doesn't exist! Kindly check";	
