@@ -4,6 +4,8 @@
 	<meta charset="utf-8">	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="icon" href="Resources/day.svg" />
+
 	<script type="text/javascript" src="JS/script.js"></script>
 	<link rel="stylesheet" type="text/css"  href="CSS/style.css">
 
@@ -22,16 +24,25 @@
 		<div class="row"><div class="col-md-12 col-sm-6"> <input type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div></div>
 		<div class="row"><div class="col-md-12 col-sm-6"> <button name="getWeather" onclick="parseJson()" class="btn btn-primary btn-block">Get Weather</button> </div></div>
 		</div>
-		<div class="row"><div class="col-md-5 col-sm-1"></div><div class="col-md-2 col-sm-2"><h2 id="City"></h2></div><div class="col-md-2 col-sm-2"><img id="flag"></div><div class="col-md-5 col-sm-1"></div></div>
+		<br>
+		<div class="row"><div class="col-md-4"></div><div class="col-md-1 col-sm-1"><p id="Temperature"></div><div class="col-md-2 col-sm-2"><h2 id="City"></h2></div><div class="col-md-2 col-sm-2"><img class="img-responsive" id="flag" style="visibility: hidden;"></div><div class="col-md-5 col-sm-1"></div></div>
 
-		<div class="row"><div class="col-md-5 col-sm-2"></div><div class="col-md-4 col-sm-8"><p id="Temperature"></p></div><div class="col-md-5 col-sm-2"></div></div>
+		<div class="row"><div class="col-md-4 col-sm-2"></div><div class="col-md-4 col-sm-8"></p></div><div class="col-md-4 col-sm-2"></div></div>
 
-		<div class="row"><div class="col-md-5 col-sm-2"></div><div class="col-md-4 col-sm-8"><img id="image"></img></div><div class="col-md-5 col-sm-2"></div></div>
+		<div class="row"><div class="col-md-4 col-sm-2"></div><div class="col-md-4 col-sm-8"><img id="image" style="visibility: hidden;" class="img-responsive"></img></div><div class="col-md-5 col-sm-2"></div></div>
 
-		<div class="row"><div class="col-md-5 col-sm-2"></div><div class="col-md-4 col-sm-8"><p id="Climate"></p></div><div class="col-md-5 col-sm-2"></div></div>
+		<div class="row"><div class="col-md-5 col-sm-2"></div><div class="col-md-4 col-sm-8"><h4 id="Climate"></h4></div><div class="col-md-5 col-sm-2"></div></div>
 		
-	</div>
+		<div class="row"><div class="col-sm-4 col-md-5"></div><div class="col-sm-1 col-md-1"><img id="temp_h" src="Resources/high-temperature.svg" class="img-responsive med-img" style="visibility: hidden;"><p id="htemp"></p></div><div class="col-sm-2 col-md-2"><img id="temp_l" src="Resources/low-temperature.svg" class="img-responsive med-img" style="visibility: hidden;"><p id="ltemp"></p></div><div class="col-sm-4 col-md-6"></div>
 
+
+	</div>
+<footer>
+	<div>Icons made by <a href="https://www.flaticon.com/authors/epiccoders" title="EpicCoders">EpicCoders</a> from <a href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a> | <a title="amcharts" href="https://www.amcharts.com/free-animated-svg-weather-icons/">www.amcharts.com</a></div>
+	<div>Weather Data by <a title="Openweathermap" href="https://openweathermap.org">Openweathermap</a></div>
+	<div>Flags by <a title="countryflags.io" href="https://www.countryflags.io/">countryflags.io</a></div>
+	<div>Developed by <a title="Sriram Balasubramanian" href="https://github.com/sriram23">Sriram</a></div>
+</footer>
 
 </body>
 
