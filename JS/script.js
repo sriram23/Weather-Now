@@ -6,6 +6,24 @@ var flag_link = "";
 var time = new Date().getHours();
 
 
+// Collapsible
+var flag = 0;
+
+function expand(){
+	if(flag == 0){
+		document.getElementById('coll').style.visibility = "visible";
+		flag = 1;
+		console.log("collapse"+flag);
+	}
+	else{
+		document.getElementById('coll').style.visibility = "collapse";
+		flag = 0;	
+		console.log("Expand"+flag);
+	}
+}
+
+// Json Parsing
+
 function parseJson(){
 	cityName = document.getElementById('city').value;
 	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;
