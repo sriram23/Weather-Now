@@ -86,6 +86,12 @@ function parseJson(){
 			document.getElementById('temp_l').style.visibility = 'visible';
 			document.getElementById('htemp').innerHTML = obj.main.temp_min+"°C";
 			document.getElementById('ltemp').innerHTML = obj.main.temp_max+"°C";
+
+			document.getElementById('wind-title').style.visibility = 'visible';
+			document.getElementById('wind-img').style.visibility = 'visible';
+			document.getElementById('wind').innerHTML = obj.wind.speed+" m/s";
+			document.getElementById('wind-img').style.transform = "rotate("+(obj.wind.deg-45)+"deg)";
+			console.log(obj.wind.deg);
 		}
 		else{
 			document.getElementById('City').innerHTML = "The city doesn't exist! Kindly check";	

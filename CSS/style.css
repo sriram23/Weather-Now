@@ -79,34 +79,34 @@ footer{
    	color: white;
 }
 
-/*.collapsible {
-  background-color: rgba(0, 68, 117, 0.84);
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}*/
-
 
 .med-img{
 	height: 25px;
 	width: 25px;
 }
-
+#wind-img,#wind{
+	height: 50px;
+	width: 50px;
+	/*margin-left: auto;*/
+	/*margin-right: auto;	*/
+}
 a:link{
 	color: rgba(217, 108, 94, 0.68);
 }
 
 a:visited{
-	color: rgba(83, 229, 46, 0.68);
+	color: rgba(54, 156, 22, 1);
 }
 
+a:hover{
+	color: rgba(54, 156, 22, 1);
+}
 
 .board{
 	background-color: rgba(25, 102, 179, 0.53);
 	padding: 5px;
+}
+
+.container{
+	padding: 10px;
 }
