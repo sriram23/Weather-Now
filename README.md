@@ -16,3 +16,8 @@ Credits:
  	- [countryflags.io](https://countryflags.io)
  - Developed by:
  	- [Sriram Balasubramanian](https://twitter.com/imsriramb)
+
+
+
+# Try it!!
+## [sriram23.github.io/Weather-Now](https://sriram23.github.io/Weather-Now) 
