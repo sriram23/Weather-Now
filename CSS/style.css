@@ -10,12 +10,16 @@
 	/*font-family: 'Lexend Deca',sans-serif; Anton*//*Lexend Deca*/
 }
 
+.bg-img{
+	background-image: url("../Resources/background6.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: sticky;
+}
+
 
 body{
-	background-image: url("../Resources/background_port.png");
 	padding: 10px;
-	/*background-repeat: no-repeat;*/
-	background-size: 100vw 100vh;
 	height: 100%;
 	color: #ffffff !important;
 	font-family: 'Montserrat','sans-serif' !important;
@@ -74,9 +78,9 @@ footer{
    	left: 0;
    	bottom: 0;
    	width: 100%;
-   	background-color: rgba(0, 68, 117, 0.84);
+   	background-color: rgba(255, 255, 255, 0.62);
    	padding: 10px;
-   	color: white;
+   	color: black;
 }
 
 
@@ -103,7 +107,7 @@ a:hover{
 }
 
 .board{
-	background-color: rgba(25, 102, 179, 0.53);
+	background-color: rgba(255, 255, 255, 0.26);
 	padding: 5px;
 }
 
