@@ -42,6 +42,7 @@ function parseJson(){
 		var obj = JSON.parse(this.response); 
 		if (request.status >= 200 && request.status < 400) {
 
+			document.getElementById('blur-bg').style.visibility = 'visible';
 			var lastupdate_unix = obj.dt;
 			var lastupdate_human = convert_unix(lastupdate_unix);
 			document.getElementById('last_update').style.visibility = 'visible';
