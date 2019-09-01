@@ -1,4 +1,4 @@
-let key = "7727eb7a7ad3adf1d307938860eca01b"
+let key = "7727eb7a7ad3adf1d307938860eca01b"//"<<Replace it With your API Key>>" Don't have a key? Get it for free from openweathermap.org
 var cityName = "";
 var link = "";
 var link_trend = "";
@@ -6,34 +6,20 @@ var flag_link = "";
 var time = new Date().getHours();
 
 
-// Collapsible
 var flag = 0;
 
-function convert_unix(time){
+function convert_unix(time){				// This will convert EPOCH time or Unix time into Human readable time
 	var date = new Date(time*1000);
 	var hours = date.getHours();
 	var min = "0"+date.getMinutes();
 	return hours+":"+min.substr(-2);
 }
 
-function expand(){
-	if(flag == 0){
-		document.getElementById('coll').style.visibility = "visible";
-		flag = 1;
-		console.log("collapse"+flag);
-	}
-	else{
-		document.getElementById('coll').style.visibility = "collapse";
-		flag = 0;	
-		console.log("Expand"+flag);
-	}
-}
-
 // Json Parsing
 
 function parseJson(){
 	cityName = document.getElementById('city').value;
-	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;
+	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
 
 	var request = new XMLHttpRequest();
 	request.open('GET',link,true);
