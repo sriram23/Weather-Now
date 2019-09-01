@@ -2,7 +2,7 @@
 
 A simple JS weather application, where you can get weather data of a particular city or loacality by searching its name in the Search box.
 
-![Sample Screenshot][logo](../Resources/screenshot.png "Sample Screenshot")
+![Sample Screenshot](/../Resources/screenshot.png "Sample Screenshot")
 
 
 Credits:
