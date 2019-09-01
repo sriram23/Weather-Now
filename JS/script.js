@@ -41,6 +41,12 @@ function parseJson(){
 	request.onload = function(){
 		var obj = JSON.parse(this.response); 
 		if (request.status >= 200 && request.status < 400) {
+
+			var lastupdate_unix = obj.dt;
+			var lastupdate_human = convert_unix(lastupdate_unix);
+			document.getElementById('last_update').style.visibility = 'visible';
+			document.getElementById('last_update').innerHTML = "Last update on: "+lastupdate_human+" Local Time";
+
 			var temp = Math.floor(obj.main.temp);
 			document.getElementById('Temperature').style.visibility = "visible";
 			if(temp<27)
@@ -88,6 +94,10 @@ function parseJson(){
 			else if(obj.weather[0].main == "Smoke"){
 				document.getElementById('image').src = "Resources/snowy-6.svg"	
 			}
+			else if(obj.weather[0].main == "Drizzle"){
+				document.getElementById('image').src = "Resources/rainy-7.svg"	
+			}
+			
 
 			document.getElementById('temp_h').style.visibility = 'visible';
 			document.getElementById('temp_l').style.visibility = 'visible';
@@ -100,14 +110,14 @@ function parseJson(){
 			document.getElementById('wind-img').style.transform = "rotate("+(obj.wind.deg-45)+"deg)";
 
 
-			var unix_time_sunrise = obj.sys.sunrise - obj.timezone;
+			var unix_time_sunrise = obj.sys.sunrise; //- obj.timezone;
 			var human_time_sunrise = convert_unix(unix_time_sunrise);
-			var unix_time_sunset = obj.sys.sunset - obj.timezone;
+			var unix_time_sunset = obj.sys.sunset; //- obj.timezone;
 			var human_time_sunset = convert_unix(unix_time_sunset);
 			document.getElementById('sunrise').style.visibility = 'visible';
 			document.getElementById('sunset').style.visibility = 'visible';
-			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs UTC";
-			document.getElementById('ss').innerHTML = human_time_sunset+" hrs UTC";
+			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs Local Time";
+			document.getElementById('ss').innerHTML = human_time_sunset+" hrs Local Time";
 		}
 		else{
 			document.getElementById('City').innerHTML = "The city doesn't exist! Kindly check";	
@@ -119,5 +129,3 @@ function parseJson(){
 	}
 	request.send();
 }
-
-
