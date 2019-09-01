@@ -24,9 +24,10 @@
 	<div class="Container">
 		<div class="row"><div class="col-md-12 col-sm-6"> <input type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div></div>
 		<div class="row"><div class="col-md-12 col-sm-6"> <button name="getWeather" onclick="parseJson()" class="btn btn-primary btn-block">Get Weather</button> </div></div>
+		<div class="row"><div class="col-md-12 col-sm-6"> <button name="getForcaste" onclick="parseJson2()" class="btn btn-primary btn-block">Get Forcaste</button> </div></div>
 		<!-- </div> -->
 		<br>
-
+		<h2 id="nointernet"></h2>
 		<div class="board" id="blur-bg" style="visibility: collapse;">
 			<div class="row"><div class="col-md-12"><p id="last_update" style="visibility: collapse;"></p></div>
 			<div class="row"><div class="col-md-4"></div><div class="col-md-1 col-sm-1"><p id="Temperature"></div><div class="col-md-3 col-sm-2"><h2 id="City"></h2></div><div class="col-md-2 col-sm-2"><img class="img-responsive" id="flag" style="visibility: hidden;"></div><div class="col-md-2 col-sm-1"></div></div>

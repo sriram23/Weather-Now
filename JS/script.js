@@ -10,9 +10,13 @@ var flag = 0;
 
 function convert_unix(time){				// This will convert EPOCH time or Unix time into Human readable time
 	var date = new Date(time*1000);
+	var day = "0"+date.getDate();
+	var mon = date.getMonth();
+	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	var yr = date.getFullYear();
 	var hours = date.getHours();
 	var min = "0"+date.getMinutes();
-	return hours+":"+min.substr(-2);
+	return day.substr(-2)+"-"+months[mon]+"-"+yr+", "+hours+":"+min.substr(-2);
 }
 
 // Json Parsing
@@ -20,14 +24,14 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 function parseJson(){
 	cityName = document.getElementById('city').value;
 	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
-
+	// link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&APPID="+key;
 	var request = new XMLHttpRequest();
 	request.open('GET',link,true);
 
 	request.onload = function(){
 		var obj = JSON.parse(this.response); 
 		if (request.status >= 200 && request.status < 400) {
-
+			document.getElementById('nointernet').style.visibility = 'collapse'
 			document.getElementById('blur-bg').style.visibility = 'visible';
 			var lastupdate_unix = obj.dt;
 			var lastupdate_human = convert_unix(lastupdate_unix);
@@ -84,6 +88,9 @@ function parseJson(){
 			else if(obj.weather[0].main == "Drizzle"){
 				document.getElementById('image').src = "Resources/rainy-7.svg"	
 			}
+			else if(obj.weather[0].main == "Thunderstorm"){
+				document.getElementById('image').src = "Resources/thunder.svg"		
+			}
 			
 
 			document.getElementById('temp_h').style.visibility = 'visible';
@@ -105,14 +112,41 @@ function parseJson(){
 			document.getElementById('sunset').style.visibility = 'visible';
 			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs Local Time";
 			document.getElementById('ss').innerHTML = human_time_sunset+" hrs Local Time";
+
+
+
+
 		}
 		else{
-			document.getElementById('City').innerHTML = "The city doesn't exist! Kindly check";	
-			document.getElementById('Temperature').innerHTML = "";
-			document.getElementById('Climate').innerHTML = "";
-			document.getElementById('flag').src = "";
-			document.getElementById('image').src = "";
+			document.getElementById('nointernet').innerHTML = "The city doesn't exist! Kindly check";
+			document.getElementById('blur-bg').style.visibility = 'invisible';
 		}
 	}
 	request.send();
+	return;
+}
+
+function parseJson2(){
+	console.log("function called"+cityName);
+	cityName = document.getElementById('city').value;
+	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
+	// console.log(link_trend);
+	var request1 = new XMLHttpRequest();
+	request1.open('GET',link_trend,true);
+
+	request1.onload = function(){
+		var obj = JSON.parse(this.response); 
+		var lst = obj.list;
+		if (request1.status >= 200 && request1.status < 400) {
+			console.log(link_trend);
+			console.log(obj.city.name);
+			for(var i=0;i<lst.length;i++){
+				console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
+			}
+		}
+		else{
+			console.log("Problem in accessing JSON"+request.status);
+		}
+	}
+	request1.send();
 }
