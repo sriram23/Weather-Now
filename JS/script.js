@@ -31,6 +31,7 @@ function parseJson(){
 	request.onload = function(){
 		var obj = JSON.parse(this.response); 
 		if (request.status >= 200 && request.status < 400) {
+			document.getElementById('parse1').style.visibility = 'visible';
 			document.getElementById('nointernet').style.visibility = 'collapse'
 			document.getElementById('blur-bg').style.visibility = 'visible';
 			var lastupdate_unix = obj.dt;
@@ -141,6 +142,7 @@ function parseJson2(){
 			console.log(link_trend);
 			console.log(obj.city.name);
 			for(var i=0;i<lst.length;i++){
+				document.getElementById("forecast").innerHTML += convert_unix(obj.list[i].dt)+" &ensp; "+obj.list[i].main.temp+"<br>";
 				console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
 			}
 		}
