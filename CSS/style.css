@@ -59,7 +59,7 @@ body{
   border-radius: 50%;
 }
 
-#temperature{
+#temperature,#temp1,#temp2,#temp3,#temp4,#temp5,#temp6,#temp7,#temp8{
 	padding: 20px;
 	color: #ffffff;
 	/*margin-left: auto;*/
@@ -112,5 +112,5 @@ a:hover{
 }
 
 .container{
-	padding: 10px;
+	margin: 10px;
 }

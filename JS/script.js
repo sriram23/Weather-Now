@@ -19,11 +19,26 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 	return day.substr(-2)+"-"+months[mon]+"-"+yr+", "+hours+":"+min.substr(-2);
 }
 
+//color code for temperature
+function getColor(num){
+	if(num<27)
+		return "cool";
+	else if(num>=27 && num<30)
+		return "mild";
+	else if(num>=30 && num<33)
+		return "warm";
+	else if(num>=33 && num<35)
+		return "hot";
+	else if(num>=35)
+		return "vhot";
+}
+
 // Json Parsing
 
 function parseJson(){
 	cityName = document.getElementById('city').value;
 	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
+	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
 	// link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&APPID="+key;
 	var request = new XMLHttpRequest();
 	request.open('GET',link,true);
@@ -40,17 +55,20 @@ function parseJson(){
 			document.getElementById('last_update').innerHTML = "Last update on: "+lastupdate_human+" Local Time";
 
 			var temp = Math.floor(obj.main.temp);
+			var color = getColor(temp);
 			document.getElementById('Temperature').style.visibility = "visible";
-			if(temp<27)
-				document.getElementById('Temperature').className = "cool";
-			else if(temp>=27 && temp<30)
-				document.getElementById('Temperature').className = "mild";
-			else if(temp>=30 && temp<33)
-				document.getElementById('Temperature').className = "warm";
-			else if(temp>=33 && temp<35)
-				document.getElementById('Temperature').className = "hot";
-			else if(temp>=35)
-				document.getElementById('Temperature').className = "vhot";
+			document.getElementById('Temperature').className = color;
+
+			// if(temp<27)
+			// 	document.getElementById('Temperature').className = "cool";
+			// else if(temp>=27 && temp<30)
+			// 	document.getElementById('Temperature').className = "mild";
+			// else if(temp>=30 && temp<33)
+			// 	document.getElementById('Temperature').className = "warm";
+			// else if(temp>=33 && temp<35)
+			// 	document.getElementById('Temperature').className = "hot";
+			// else if(temp>=35)
+			// 	document.getElementById('Temperature').className = "vhot";
 
 			document.getElementById('Temperature').innerHTML = obj.main.temp+"°C";
 			document.getElementById('Climate').innerHTML = "Weather: "+obj.weather[0].description;
@@ -113,10 +131,6 @@ function parseJson(){
 			document.getElementById('sunset').style.visibility = 'visible';
 			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs Local Time";
 			document.getElementById('ss').innerHTML = human_time_sunset+" hrs Local Time";
-
-
-
-
 		}
 		else{
 			document.getElementById('nointernet').innerHTML = "The city doesn't exist! Kindly check";
@@ -124,6 +138,7 @@ function parseJson(){
 		}
 	}
 	request.send();
+	parseJson2();
 	return;
 }
 
@@ -142,9 +157,35 @@ function parseJson2(){
 			console.log(link_trend);
 			console.log(obj.city.name);
 			for(var i=0;i<lst.length;i++){
-				document.getElementById("forecast").innerHTML += convert_unix(obj.list[i].dt)+" &ensp; "+obj.list[i].main.temp+"<br>";
+				// document.getElementById("forecast").innerHTML += convert_unix(obj.list[i].dt)+" &ensp; "+obj.list[i].main.temp+"<br>";
 				console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
 			}
+			document.getElementById("temp1").innerHTML = obj.list[0].main.temp;
+			document.getElementById("temp2").innerHTML = obj.list[1].main.temp;
+			document.getElementById("temp3").innerHTML = obj.list[2].main.temp;
+			document.getElementById("temp4").innerHTML = obj.list[3].main.temp;
+			document.getElementById("temp5").innerHTML = obj.list[4].main.temp;
+			document.getElementById("temp6").innerHTML = obj.list[5].main.temp;
+			document.getElementById("temp7").innerHTML = obj.list[6].main.temp;
+			document.getElementById("temp8").innerHTML = obj.list[7].main.temp;
+
+			document.getElementById('temp1').className = getColor(obj.list[0].main.temp);
+			document.getElementById('temp2').className = getColor(obj.list[1].main.temp);
+			document.getElementById('temp3').className = getColor(obj.list[2].main.temp);
+			document.getElementById('temp4').className = getColor(obj.list[3].main.temp);
+			document.getElementById('temp5').className = getColor(obj.list[4].main.temp);
+			document.getElementById('temp6').className = getColor(obj.list[5].main.temp);
+			document.getElementById('temp7').className = getColor(obj.list[6].main.temp);
+			document.getElementById('temp8').className = getColor(obj.list[7].main.temp);			
+
+			document.getElementById("date1").innerHTML = convert_unix(obj.list[0].dt);
+			document.getElementById("date2").innerHTML = convert_unix(obj.list[1].dt);
+			document.getElementById("date3").innerHTML = convert_unix(obj.list[2].dt);
+			document.getElementById("date4").innerHTML = convert_unix(obj.list[3].dt);
+			document.getElementById("date5").innerHTML = convert_unix(obj.list[4].dt);
+			document.getElementById("date6").innerHTML = convert_unix(obj.list[5].dt);
+			document.getElementById("date7").innerHTML = convert_unix(obj.list[6].dt);
+			document.getElementById("date8").innerHTML = convert_unix(obj.list[7].dt);
 		}
 		else{
 			console.log("Problem in accessing JSON"+request.status);
