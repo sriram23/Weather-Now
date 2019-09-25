@@ -5,6 +5,8 @@ var link_trend = "";
 var link_time = "";
 var flag_link = "";
 var time = new Date().getHours();
+var lat = "";
+var lon = "";
 ext_str="";
 
 var flag = 0;
@@ -19,6 +21,21 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 	var min = "0"+date.getMinutes();
 	return day.substr(-2)+"-"+months[mon]+"-"+yr+", "+hours+":"+min.substr(-2);
 }
+//Getting Geo Location
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x = "local time";
+    window.alert("Location Service is not enabled in the browser");
+  }
+}
+
+function showPosition(position) {
+ window.lat = position.coords.latitude;
+ window.lon = position.coords.longitude;
+}
+
 
 //color code for temperature
 function getColor(num){
@@ -45,7 +62,6 @@ function getLocalTime(lat,lon){
 			// var ext_str = "";
 			var ext = obj.abbreviation;
 			ext_str = JSON.stringify(ext);
-			console.log(ext_str+" - "+window.ext_str);
 			document.getElementById('last_update').innerHTML += " "+ext;
 			document.getElementById('sr').innerHTML += " "+ext;
 			document.getElementById('ss').innerHTML += " "+ext;
@@ -60,11 +76,10 @@ function getLocalTime(lat,lon){
 			// return ext_str;
 		}
 		else{
-			console.log("Something wrong with API Call");
+			Window.alert("Some thing went wrong with api call");
 		}	
 	}
 	request3.send();
-	// console.log("Return: "+ext_str);
 	return window.ext_str;
 }
 
@@ -86,13 +101,12 @@ function parseJson(){
 			document.getElementById('nointernet').style.visibility = 'collapse'
 			document.getElementById('blur-bg').style.visibility = 'visible';
 			var lastupdate_unix = obj.dt;
-			var lat = obj.coord.lat;
-			var lon = obj.coord.lon;
+			// var lat = obj.coord.lat;
+			// var lon = obj.coord.lon;
 			var offset = obj.timezone;
 			// var localtime = getLocalTime(lat,lon,offset,lastupdate_unix);
 			var lastupdate_human = convert_unix(lastupdate_unix);
-			var time_zone = getLocalTime(lat,lon);
-			console.log("Time Zone: "+time_zone+" - "+window.ext_str);
+			var time_zone = getLocalTime(window.lat,window.lon);
 			document.getElementById('last_update').style.visibility = 'visible';
 			document.getElementById('last_update').innerHTML = "Last update on: "+lastupdate_human;
 
@@ -176,10 +190,8 @@ function parseJson(){
 }
 
 function parseJson2(){
-	// console.log("function called"+cityName);
 	cityName = document.getElementById('city').value;
 	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
-	// console.log(link_trend);
 	var request1 = new XMLHttpRequest();
 	request1.open('GET',link_trend,true);
 
@@ -187,11 +199,8 @@ function parseJson2(){
 		var obj = JSON.parse(this.response); 
 		var lst = obj.list;
 		if (request1.status >= 200 && request1.status < 400) {
-			// console.log(link_trend);
-			// console.log(obj.city.name);
 			for(var i=0;i<lst.length;i++){
 				// document.getElementById("forecast").innerHTML += convert_unix(obj.list[i].dt)+" &ensp; "+obj.list[i].main.temp+"<br>";
-				// console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
 			}
 			document.getElementById("temp1").innerHTML = obj.list[0].main.temp;
 			document.getElementById("temp2").innerHTML = obj.list[1].main.temp;
