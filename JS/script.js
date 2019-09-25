@@ -2,9 +2,10 @@ let key = "7727eb7a7ad3adf1d307938860eca01b"//"<<Replace it With your API Key>>"
 var cityName = "";
 var link = "";
 var link_trend = "";
+var link_time = "";
 var flag_link = "";
 var time = new Date().getHours();
-
+ext_str="";
 
 var flag = 0;
 
@@ -32,10 +33,45 @@ function getColor(num){
 	else if(num>=35)
 		return "vhot";
 }
+// Local time
+function getLocalTime(lat,lon){
+	// var ext_str;
+	link_time = "https://api.timezonedb.com/v2.1/get-time-zone?key=HDYY2MHLPCQV&format=json&by=position&lng="+lon+"&lat="+lat;
+	var request3 = new XMLHttpRequest();
+	request3.open('GET',link_time,true);
+	request3.onload = function(){
+		var obj = JSON.parse(this.response); 
+		if (request3.status >= 200 && request3.status < 400) {
+			// var ext_str = "";
+			var ext = obj.abbreviation;
+			ext_str = JSON.stringify(ext);
+			console.log(ext_str+" - "+window.ext_str);
+			document.getElementById('last_update').innerHTML += " "+ext;
+			document.getElementById('sr').innerHTML += " "+ext;
+			document.getElementById('ss').innerHTML += " "+ext;
+			document.getElementById("date1").innerHTML += " "+ext;
+			document.getElementById("date2").innerHTML += " "+ext;
+			document.getElementById("date3").innerHTML += " "+ext;
+			document.getElementById("date4").innerHTML += " "+ext;
+			document.getElementById("date5").innerHTML += " "+ext;
+			document.getElementById("date6").innerHTML += " "+ext;
+			document.getElementById("date7").innerHTML += " "+ext;
+			document.getElementById("date8").innerHTML += " "+ext;
+			// return ext_str;
+		}
+		else{
+			console.log("Something wrong with API Call");
+		}	
+	}
+	request3.send();
+	// console.log("Return: "+ext_str);
+	return window.ext_str;
+}
 
 // Json Parsing
 
 function parseJson(){
+	ext_str="";
 	cityName = document.getElementById('city').value;
 	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
 	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
@@ -50,25 +86,20 @@ function parseJson(){
 			document.getElementById('nointernet').style.visibility = 'collapse'
 			document.getElementById('blur-bg').style.visibility = 'visible';
 			var lastupdate_unix = obj.dt;
+			var lat = obj.coord.lat;
+			var lon = obj.coord.lon;
+			var offset = obj.timezone;
+			// var localtime = getLocalTime(lat,lon,offset,lastupdate_unix);
 			var lastupdate_human = convert_unix(lastupdate_unix);
+			var time_zone = getLocalTime(lat,lon);
+			console.log("Time Zone: "+time_zone+" - "+window.ext_str);
 			document.getElementById('last_update').style.visibility = 'visible';
-			document.getElementById('last_update').innerHTML = "Last update on: "+lastupdate_human+" Local Time";
+			document.getElementById('last_update').innerHTML = "Last update on: "+lastupdate_human;
 
 			var temp = Math.floor(obj.main.temp);
 			var color = getColor(temp);
 			document.getElementById('Temperature').style.visibility = "visible";
 			document.getElementById('Temperature').className = color;
-
-			// if(temp<27)
-			// 	document.getElementById('Temperature').className = "cool";
-			// else if(temp>=27 && temp<30)
-			// 	document.getElementById('Temperature').className = "mild";
-			// else if(temp>=30 && temp<33)
-			// 	document.getElementById('Temperature').className = "warm";
-			// else if(temp>=33 && temp<35)
-			// 	document.getElementById('Temperature').className = "hot";
-			// else if(temp>=35)
-			// 	document.getElementById('Temperature').className = "vhot";
 
 			document.getElementById('Temperature').innerHTML = obj.main.temp+"°C";
 			document.getElementById('Climate').innerHTML = "Weather: "+obj.weather[0].description;
@@ -124,13 +155,15 @@ function parseJson(){
 
 
 			var unix_time_sunrise = obj.sys.sunrise; //- obj.timezone;
+			// var human_time_sunrise = getLocalTime(unix_time_sunrise,offset,lat,lon);
 			var human_time_sunrise = convert_unix(unix_time_sunrise);
 			var unix_time_sunset = obj.sys.sunset; //- obj.timezone;
 			var human_time_sunset = convert_unix(unix_time_sunset);
+			// var human_time_sunset = getLocalTime(unix_time_sunset,offset,lat,lon);
 			document.getElementById('sunrise').style.visibility = 'visible';
 			document.getElementById('sunset').style.visibility = 'visible';
-			document.getElementById('sr').innerHTML = human_time_sunrise+" hrs Local Time";
-			document.getElementById('ss').innerHTML = human_time_sunset+" hrs Local Time";
+			document.getElementById('sr').innerHTML = human_time_sunrise;
+			document.getElementById('ss').innerHTML = human_time_sunset;
 		}
 		else{
 			document.getElementById('nointernet').innerHTML = "The city doesn't exist! Kindly check";
@@ -143,7 +176,7 @@ function parseJson(){
 }
 
 function parseJson2(){
-	console.log("function called"+cityName);
+	// console.log("function called"+cityName);
 	cityName = document.getElementById('city').value;
 	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
 	// console.log(link_trend);
@@ -154,11 +187,11 @@ function parseJson2(){
 		var obj = JSON.parse(this.response); 
 		var lst = obj.list;
 		if (request1.status >= 200 && request1.status < 400) {
-			console.log(link_trend);
-			console.log(obj.city.name);
+			// console.log(link_trend);
+			// console.log(obj.city.name);
 			for(var i=0;i<lst.length;i++){
 				// document.getElementById("forecast").innerHTML += convert_unix(obj.list[i].dt)+" &ensp; "+obj.list[i].main.temp+"<br>";
-				console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
+				// console.log(convert_unix(obj.list[i].dt)+" : "+obj.list[i].main.temp);
 			}
 			document.getElementById("temp1").innerHTML = obj.list[0].main.temp;
 			document.getElementById("temp2").innerHTML = obj.list[1].main.temp;
