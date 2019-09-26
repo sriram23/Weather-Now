@@ -11,6 +11,13 @@ ext_str="";
 
 var flag = 0;
 
+
+//Make Visible
+function makeVisible(){
+	document.getElementById('city').style.visibility = 'visible';
+	document.getElementById('SearchVisibility').style.visibility = 'collapse';
+}
+
 function convert_unix(time){				// This will convert EPOCH time or Unix time into Human readable time
 	var date = new Date(time*1000);
 	var day = "0"+date.getDate();
@@ -25,6 +32,7 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+    window.alert("Location Acquired");
   } else { 
     x = "local time";
     window.alert("Location Service is not enabled in the browser");
@@ -86,9 +94,17 @@ function getLocalTime(lat,lon){
 // Json Parsing
 
 function parseJson(){
+	if(document.getElementById('city').style.visibility == 'visible')
+{cityName = document.getElementById('city').value;}
 	ext_str="";
-	cityName = document.getElementById('city').value;
-	link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
+	if(cityName == ""){// && document.getElementById('city').style.visibility != 'visible'){
+		getLocation();
+		link = "http://api.openweathermap.org/data/2.5/weather?lat="+window.lat+"&lon="+window.lon+"139&units=metric&apikey="+key;
+	}
+	else if(cityName != ""){
+		link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
+	}
+	
 	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
 	// link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&APPID="+key;
 	var request = new XMLHttpRequest();
@@ -97,6 +113,10 @@ function parseJson(){
 	request.onload = function(){
 		var obj = JSON.parse(this.response); 
 		if (request.status >= 200 && request.status < 400) {
+			if(cityName == ""){
+				cityName = obj.name;
+				console.log(cityName);
+			}
 			document.getElementById('parse1').style.visibility = 'visible';
 			document.getElementById('nointernet').style.visibility = 'collapse'
 			document.getElementById('blur-bg').style.visibility = 'visible';
@@ -185,12 +205,13 @@ function parseJson(){
 		}
 	}
 	request.send();
-	parseJson2();
+	parseJson2(cityName);
+	window.alert("Your Location: "+cityName);
 	return;
 }
 
-function parseJson2(){
-	cityName = document.getElementById('city').value;
+function parseJson2(cityName){
+	// cityName = document.getElementById('city').value;
 	link_trend = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=metric&APPID="+key;
 	var request1 = new XMLHttpRequest();
 	request1.open('GET',link_trend,true);
