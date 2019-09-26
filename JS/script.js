@@ -98,7 +98,6 @@ function parseJson(){
 {cityName = document.getElementById('city').value;}
 	ext_str="";
 	if(cityName == ""){// && document.getElementById('city').style.visibility != 'visible'){
-		getLocation();
 		link = "http://api.openweathermap.org/data/2.5/weather?lat="+window.lat+"&lon="+window.lon+"139&units=metric&apikey="+key;
 	}
 	else if(cityName != ""){
