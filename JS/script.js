@@ -32,7 +32,6 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-    window.alert("Location Acquired");
   } else { 
     x = "local time";
     window.alert("Location Service is not enabled in the browser");
@@ -42,6 +41,7 @@ function getLocation() {
 function showPosition(position) {
  window.lat = position.coords.latitude;
  window.lon = position.coords.longitude;
+ window.alert("Location Acquired: lat:"+lat+" lng:"+lon);
 }
 
 
@@ -205,7 +205,7 @@ function parseJson(){
 	}
 	request.send();
 	parseJson2(cityName);
-	window.alert("Your Location: "+cityName);
+	// window.alert("Your Location: "+cityName);
 	return;
 }
 
