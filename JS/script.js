@@ -250,7 +250,7 @@ function parseJson2(cityName){
 			document.getElementById("date8").innerHTML = convert_unix(obj.list[7].dt);
 		}
 		else{
-			console.log("Problem in accessing JSON"+request.status);
+			console.log("Problem in accessing JSON"+request1.status);
 		}
 	}
 	request1.send();
