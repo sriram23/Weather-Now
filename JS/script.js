@@ -98,7 +98,7 @@ function parseJson(){
 {cityName = document.getElementById('city').value;}
 	ext_str="";
 	if(cityName == ""){// && document.getElementById('city').style.visibility != 'visible'){
-		link = "http://api.openweathermap.org/data/2.5/weather?lat="+window.lat+"&lon="+window.lon+"139&units=metric&apikey="+key;
+		link = "https://api.openweathermap.org/data/2.5/weather?lat="+window.lat+"&lon="+window.lon+"139&units=metric&apikey="+key;
 	}
 	else if(cityName != ""){
 		link = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&apikey="+key;  //API Request Link
