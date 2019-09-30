@@ -12,6 +12,41 @@ ext_str="";
 var flag = 0;
 
 
+// Weather
+function getWeather(weather){
+	if(weather == "Haze"){
+				if(time<18 && time>6)
+					return "Resources/cloudy-day-1.svg"
+				else
+					return "Resources/cloudy-night-1.svg"
+			}
+			else if(weather == "Clouds"){
+				return "Resources/cloudy.svg"	
+			}
+			else if(weather == "Rain"){
+				return "Resources/rainy-6.svg"	
+			}
+			else if(weather == "Mist"){
+				return "Resources/snowy-4.svg"	
+			}
+			else if(weather == "Clear"){
+				if(time<18 && time>6)
+					return "Resources/day.svg"
+				else
+					return "Resources/night.svg"
+			}
+			else if(weather == "Smoke"){
+				return "Resources/snowy-6.svg"	
+			}
+			else if(weather == "Drizzle"){
+				return "Resources/rainy-7.svg"	
+			}
+			else if(weather == "Thunderstorm"){
+				return "Resources/thunder.svg"		
+			}
+			return;
+}
+
 //Make Visible
 function makeVisible(){
 	document.getElementById('city').style.visibility = 'visible';
@@ -148,36 +183,37 @@ function parseJson(){
 
 
 			document.getElementById('image').style.visibility = "visible";
-			if(obj.weather[0].main == "Haze"){
-				if(time<18 && time>6)
-					document.getElementById('image').src = "Resources/cloudy-day-1.svg"
-				else
-					document.getElementById('image').src = "Resources/cloudy-night-1.svg"
-			}
-			else if(obj.weather[0].main == "Clouds"){
-				document.getElementById('image').src = "Resources/cloudy.svg"	
-			}
-			else if(obj.weather[0].main == "Rain"){
-				document.getElementById('image').src = "Resources/rainy-6.svg"	
-			}
-			else if(obj.weather[0].main == "Mist"){
-				document.getElementById('image').src = "Resources/snowy-4.svg"	
-			}
-			else if(obj.weather[0].main == "Clear"){
-				if(time<18 && time>6)
-					document.getElementById('image').src = "Resources/day.svg"
-				else
-					document.getElementById('image').src = "Resources/night.svg"
-			}
-			else if(obj.weather[0].main == "Smoke"){
-				document.getElementById('image').src = "Resources/snowy-6.svg"	
-			}
-			else if(obj.weather[0].main == "Drizzle"){
-				document.getElementById('image').src = "Resources/rainy-7.svg"	
-			}
-			else if(obj.weather[0].main == "Thunderstorm"){
-				document.getElementById('image').src = "Resources/thunder.svg"		
-			}
+			document.getElementById('image').src = getWeather(obj.weather[0].main);
+			// if(obj.weather[0].main == "Haze"){
+			// 	if(time<18 && time>6)
+			// 		document.getElementById('image').src = "Resources/cloudy-day-1.svg"
+			// 	else
+			// 		document.getElementById('image').src = "Resources/cloudy-night-1.svg"
+			// }
+			// else if(obj.weather[0].main == "Clouds"){
+			// 	document.getElementById('image').src = "Resources/cloudy.svg"	
+			// }
+			// else if(obj.weather[0].main == "Rain"){
+			// 	document.getElementById('image').src = "Resources/rainy-6.svg"	
+			// }
+			// else if(obj.weather[0].main == "Mist"){
+			// 	document.getElementById('image').src = "Resources/snowy-4.svg"	
+			// }
+			// else if(obj.weather[0].main == "Clear"){
+			// 	if(time<18 && time>6)
+			// 		document.getElementById('image').src = "Resources/day.svg"
+			// 	else
+			// 		document.getElementById('image').src = "Resources/night.svg"
+			// }
+			// else if(obj.weather[0].main == "Smoke"){
+			// 	document.getElementById('image').src = "Resources/snowy-6.svg"	
+			// }
+			// else if(obj.weather[0].main == "Drizzle"){
+			// 	document.getElementById('image').src = "Resources/rainy-7.svg"	
+			// }
+			// else if(obj.weather[0].main == "Thunderstorm"){
+			// 	document.getElementById('image').src = "Resources/thunder.svg"		
+			// }
 			
 
 			document.getElementById('temp_h').style.visibility = 'visible';
@@ -251,6 +287,24 @@ function parseJson2(cityName){
 			document.getElementById("date6").innerHTML = convert_unix(obj.list[5].dt);
 			document.getElementById("date7").innerHTML = convert_unix(obj.list[6].dt);
 			document.getElementById("date8").innerHTML = convert_unix(obj.list[7].dt);
+
+			document.getElementById("im1").src = getWeather(obj.list[0].weather[0].main);
+			document.getElementById("im2").src = getWeather(obj.list[1].weather[0].main);
+			document.getElementById("im3").src = getWeather(obj.list[2].weather[0].main);
+			document.getElementById("im4").src = getWeather(obj.list[3].weather[0].main);
+			document.getElementById("im5").src = getWeather(obj.list[4].weather[0].main);
+			document.getElementById("im6").src = getWeather(obj.list[5].weather[0].main);
+			document.getElementById("im7").src = getWeather(obj.list[6].weather[0].main);
+			document.getElementById("im8").src = getWeather(obj.list[7].weather[0].main);
+
+			document.getElementById("we1").innerHTML = obj.list[0].weather[0].description;
+			document.getElementById("we2").innerHTML = obj.list[1].weather[0].description;
+			document.getElementById("we3").innerHTML = obj.list[2].weather[0].description;
+			document.getElementById("we4").innerHTML = obj.list[3].weather[0].description;
+			document.getElementById("we5").innerHTML = obj.list[4].weather[0].description;
+			document.getElementById("we6").innerHTML = obj.list[5].weather[0].description;
+			document.getElementById("we7").innerHTML = obj.list[6].weather[0].description;
+			document.getElementById("we8").innerHTML = obj.list[7].weather[0].description;
 		}
 		else{
 			console.log("Problem in accessing JSON"+request1.status);
