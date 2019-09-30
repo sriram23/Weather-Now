@@ -33,9 +33,9 @@ function convert_unix(time){				// This will convert EPOCH time or Unix time int
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x = "local time";
-    window.alert("Location Service is not enabled in the browser");
+  } else if(!(navigator.geolocation)) { 
+  	document.getElementById('nointernet').style.visibility = "visible"; 
+   	document.getElementById('nointernet').innerHTML = "Kindly check if Location service is enabled in your device / browser. Alternatively, you can search for your city by hitting the button"; 
   }
 }
 
@@ -118,7 +118,7 @@ function parseJson(){
 				cityName = obj.name;
 				console.log(cityName);
 				parseJson2(window.cityName);
-				window.alert("Your Location: "+window.cityName);
+				// window.alert("Your Location: "+window.cityName);
 			}
 			document.getElementById('parse1').style.visibility = 'visible';
 			document.getElementById('nointernet').style.visibility = 'collapse'
