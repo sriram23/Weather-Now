@@ -15,6 +15,7 @@ var flag = 0;
 //Make Visible
 function makeVisible(){
 	document.getElementById('city').style.visibility = 'visible';
+	document.getElementById('getWeather').style.visibility = 'visible';
 	document.getElementById('SearchVisibility').style.visibility = 'collapse';
 }
 
@@ -41,7 +42,8 @@ function getLocation() {
 function showPosition(position) {
  window.lat = position.coords.latitude;
  window.lon = position.coords.longitude;
- window.alert("Location Acquired: lat:"+lat+" lng:"+lon);
+ // window.alert("Location Acquired: lat:"+lat+" lng:"+lon);
+ parseJson();
 }
 
 
@@ -115,6 +117,8 @@ function parseJson(){
 			if(cityName == ""){
 				cityName = obj.name;
 				console.log(cityName);
+				parseJson2(window.cityName);
+				window.alert("Your Location: "+window.cityName);
 			}
 			document.getElementById('parse1').style.visibility = 'visible';
 			document.getElementById('nointernet').style.visibility = 'collapse'
@@ -204,8 +208,7 @@ function parseJson(){
 		}
 	}
 	request.send();
-	parseJson2(cityName);
-	// window.alert("Your Location: "+cityName);
+	// parseJson2(window.cityName);
 	return;
 }
 
