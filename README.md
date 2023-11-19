@@ -1,13 +1,17 @@
 ![Thanks to all stargazers](https://git-lister.onrender.com/api/stars/sriram23/Weather-Now?v&limit=15)
-# Weather Now #
+# Weather Now (Javascript)
 
-A simple JS weather application, where you can get weather data of a particular city or loacality by searching its name in the Search box.
+A simple JavaScript weather application, where you can get weather data of your current location, if your location is enabled in the browser. You can also search weather data for a particular location with the provided textbox!
 
+## Link
+[sriram23.github.io/Weather-Now](https://sriram23.github.io/Weather-Now) 
+
+## Screenshots
 ![Sample Screenshot](Resources/screenshot.png "Sample Screenshot")
 ![Sample Gif](Resources/bg-gif.gif "Sample Gif")
 
 
-Credits:
+## Credits:
 
  - Icons:
  	- EpicCoders from [www.flaticon.com](https://www.flaticon.com)
@@ -19,8 +23,4 @@ Credits:
  - Developed by:
  	- [Sriram Balasubramanian](https://twitter.com/imsriramb)
 
-
-
-# Try it!!
-## [sriram23.github.io/Weather-Now](https://sriram23.github.io/Weather-Now) 
 
