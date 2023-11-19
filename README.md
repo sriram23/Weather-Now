@@ -1,3 +1,4 @@
+![Thanks to all stargazers](https://git-lister.onrender.com/api/stars/sriram23/Weather-Now?v&limit=15)
 # Weather Now #
 
 A simple JS weather application, where you can get weather data of a particular city or loacality by searching its name in the Search box.
@@ -22,3 +23,4 @@ Credits:
 
 # Try it!!
 ## [sriram23.github.io/Weather-Now](https://sriram23.github.io/Weather-Now) 
+
