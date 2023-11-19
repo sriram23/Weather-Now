@@ -7,12 +7,7 @@ A simple JavaScript weather application, where you can get weather data of your 
 [sriram23.github.io/Weather-Now](https://sriram23.github.io/Weather-Now) 
 
 ## Screenshots
-### Specific Location
 ![weather_now_1](https://github.com/sriram23/Weather-Now/assets/18396996/ed457f93-846b-4079-9f17-0e2edbdd1dc9)
-
-### Fetching from location
-
-
 
 ## Credits:
 
