@@ -20,19 +20,17 @@
 
 </head>
 <body onload="getLocation();">
-	<p style="color: red">*Enable location service in your device / browser to get accurate weather data</p>
 	<div class="bg-img img-responsive">
-	<div class="Container" id="parse1">
-		<div class="row"><div class="col-md-12 col-sm-6"> <input  style="visibility: collapse;" type="text" name="city" id="city" placeholder="Enter City Name" class="form-control"> </div></div>
+		<p style="color: red">*Enable location service in your device / browser to get accurate weather data</p>
+	<div class="Container" id="parse1" style="min-height: 97%; margin-bottom: unset;">
+		<div class="row"><div class="col-md-12 col-sm-6"> <input  style="visibility: collapse;" type="text" name="city" id="city" placeholder="E.g. Coimbatore" class="form-control"> </div></div>
 		<div class="row"><div class="col-md-12 col-sm-6"> <button style="visibility: collapse;" name="getWeather" id="getWeather" onclick="parseJson()" class="btn btn-primary btn-block">Get Weather</button> </div></div>
-		<div class="row"><div class="col-md-12 col-sm-6"> <button name="Search" onclick="makeVisible()" class="btn btn-primary btn-block" id="SearchVisibility">Search another city</button> </div></div>
-		<!-- <div class="row"><div class="col-md-12 col-sm-6"> <button name="getForcaste" onclick="parseJson2()" class="btn btn-primary btn-block">Get Forcaste</button> </div></div> -->
-		<!-- </div> -->
+		<div class="row"><div class="col-md-12 col-sm-6"> <button name="Search" onclick="makeVisible()" class="btn btn-primary btn-block" id="SearchVisibility">Get Weather for a location</button> </div></div>
 		<br>
 		<h2 id="nointernet"></h2>
 		<div class="board" id="blur-bg" style="visibility: collapse;">
-			<div class="row"><div class="col-md-12"><p id="last_update" style="visibility: collapse;"></p></div>
-			<div class="row"><div class="col-md-4"></div><div class="col-md-1 col-sm-1"><p id="Temperature" style="font-style: bold;"></div><div class="col-md-3 col-sm-2"><h2 id="City"></h2></div><div class="col-md-2 col-sm-2"><img class="img-responsive" id="flag" style="visibility: hidden;"></div><div class="col-md-2 col-sm-1"></div></div>
+			<div class="row"><div class="col-md-12"><p id="last_update" style="visibility: collapse; text-align: center;"></p></div>
+			<div class="row" style="display: flex;"><div class="col-md-4"></div><div class="col-md-1 col-sm-1"><p id="Temperature" style="font-style: bold;"></div><div class="col-md-3 col-sm-2"><h2 id="displayCity"></h2></div><div class="col-md-2 col-sm-2"><img class="img-responsive" id="flag" style="visibility: hidden;"></div><div class="col-md-2 col-sm-1"></div></div>
 
 			<div class="row"><div class="col-md-4 col-sm-2"></div><div class="col-md-4 col-sm-8"></p></div><div class="col-md-4 col-sm-2"></div></div>
 
@@ -50,7 +48,7 @@
 
 			<!-- Trend Starts -->
 			<div class="row">
-			<div class="col-md-12"><h3 style="padding: 10px;" id="forecast">Forecast</h3>
+			<div class="col-md-12"><h3 style="padding: 10px; text-align: center;" id="forecast">Forecast</h3>
 			</div></div>
 
 			<div class="row">
@@ -79,8 +77,9 @@
 		<div class="Container">
 			<div>Icons made by <a target="_blank" href="https://www.flaticon.com/authors/epiccoders" title="EpicCoders">EpicCoders</a> from <a target="_blank" href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a> | <a target="_blank" title="amcharts" href="https://www.amcharts.com/free-animated-svg-weather-icons/">www.amcharts.com</a></div>
 			<div>Weather Data by <a target="_blank" title="Openweathermap" href="https://openweathermap.org">Openweathermap</a></div>
-			<div>Flags by <a target="_blank" title="countryflags.io" href="https://www.countryflags.io/">countryflags.io</a></div>
 			<div>Developed by <a target="_blank" title="Sriram Balasubramanian" href="https://github.com/sriram23">Sriram</a></div>
+			Background Image by <a href="https://unsplash.com/@noaa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NOAA</a> on <a href="https://unsplash.com/photos/lightning-at-night-p9BRX1mBfe4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
 
 			<h4>Get the Source code @ <a href="https://github.com/sriram23/Weather-Now">https://github.com/sriram23/Weather-Now</a></h4>
 	

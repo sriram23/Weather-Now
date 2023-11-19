@@ -175,9 +175,9 @@ function parseJson(){
 
 			document.getElementById('Temperature').innerHTML = obj.main.temp+"°C";
 			document.getElementById('Climate').innerHTML = "Weather: "+obj.weather[0].description;
-			document.getElementById('City').innerHTML = obj.name;
+			document.getElementById('displayCity').innerHTML = obj.name;
 			var country = obj.sys.country;
-			flag_link = "https://www.countryflags.io/"+country+"/shiny/64.png";
+			flag_link = "https://sriram-23.vercel.app/flag?q="+country;
 			document.getElementById('flag').style.visibility = "visible";
 			document.getElementById('flag').src = flag_link;
 
@@ -239,7 +239,7 @@ function parseJson(){
 			document.getElementById('ss').innerHTML = human_time_sunset;
 		}
 		else{
-			document.getElementById('nointernet').innerHTML = "The city doesn't exist! Kindly check";
+			document.getElementById('nointernet').innerHTML = "The location doesn't exist! Kindly check";
 			document.getElementById('blur-bg').style.visibility = 'invisible';
 		}
 	}

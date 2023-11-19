@@ -5,64 +5,75 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Anton|Gayathri:100,400,700|Lexend+Deca|Montserrat&display=swap');
-
-*{
-	/*font-family: 'Lexend Deca',sans-serif; Anton*//*Lexend Deca*/
+html {
+	padding: unset;
+	margin: unset;
 }
-
+body {
+	margin: unset;
+	padding: unset;
+	color: #ffffff !important;
+	font-family: 'Montserrat','sans-serif' !important;
+	min-height: 90vh;
+	min-width: 90vw;
+}
 .bg-img{
-	background-image: url("../Resources/background6.png");
+	background-image: url("../Resources/thunder.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	position: sticky;
-}
-
-
-body{
-	padding: 10px;
+	/* width: 100%; */
 	height: 100%;
-	color: #ffffff !important;
-	font-family: 'Montserrat','sans-serif' !important;
 }
+
+
+
 .cool {
-  height: 75px;
-  width: 75px;
+  /* height: 100px;
+  width: 100px; */
   background-color: #006eff;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .mild {
-  height: 75px;
-  width: 75px;
+  /* height: 100px;
+  width: 100px; */
   background-color: #00ddff;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .warm {
-  height: 75px;
-  width: 75px;
+  /* height: 100px;
+  width: 100px; */
   background-color: #ffae00;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .hot {
-  height: 75px;
-  width: 75px;
+  
   background-color: #ff5000;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .vhot {
-  height: 75px;
-  width: 75px;
+  /* height: 100px;
+  width: 100px; */
   background-color: #ff0000;
+  
+}
+.cool, .mild, .warm, .hot, .vhot {
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
-
 #temperature,#temp1,#temp2,#temp3,#temp4,#temp5,#temp6,#temp7,#temp8{
-	padding: 20px;
+	padding: 35px 20px;
+	font-size: 20px;
 	color: #ffffff;
-	/*margin-left: auto;*/
+	margin: 5px;
+}
+#displayCity, #flag {
+	margin: 35px 15px;
 }
 
 #image{
